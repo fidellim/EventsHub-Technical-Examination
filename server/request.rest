@@ -1,3 +1,29 @@
 # This is for a VSCODE extension called "REST CLIENT"
 
 GET http://localhost:5000/todos
+
+###
+
+POST http://localhost:5000/todo/new
+Content-Type: application/json
+
+{
+"text": "Testing new todo item"
+}
+
+###
+
+DELETE http://localhost:5000/todo/delete/62ea6839f9ce269a479c350e
+
+###
+
+GET http://localhost:5000/todo/complete/62ea6839f9ce269a479c350e
+
+###
+
+PUT http://localhost:5000/todo/update/62ea6839f9ce269a479c350e
+Content-Type: application/json
+
+{
+"text": "Update item"
+}
