@@ -55,6 +55,9 @@ Create a simple todo application that allows users to:
 - [Animate line-through using CSS](https://stackoverflow.com/questions/36267507/is-it-possible-to-animate-a-css-line-through-text-decoration) - add an animation of a text's line-through.
 - [Export in CommonJS Module Syntax NodeJs](https://stackoverflow.com/questions/38296667/getting-unexpected-token-export) - export using modules.
 - [Router.use() error](https://stackoverflow.com/questions/27465850/typeerror-router-use-requires-middleware-function-but-got-a-object) - router.use() requires middleware function but got an Object solution.
+- [Deploy subdirectory to Heroku](https://janessagarrow.com/blog/how-to-deploy-a-subdirectory-to-heroku/) - how to deploy the backend of a project using Heroku with a subdirectory of frontend and backend.
+- [Nodemon not working with Heroku](https://stackoverflow.com/questions/56047981/node-js-heroku-deployment-on-mac-sh-1-nodemon-not-found-npm-err-nodemon) - if nodemon is a dev dependency, it won't work when deploying to Heroku. As Heroku only installs dependencies for production.
+- [API with empty path deploying to Heroku](https://stackoverflow.com/questions/62015887/heroku-application-crashed-at-error-code-h10-desc-app-crashed-method-get-path) - do not deploy a project with an empty path "/". It will cause an error.
 
 ## Author
 
