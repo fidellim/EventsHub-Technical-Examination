@@ -197,7 +197,6 @@ const App = () => {
 							value={editTodo.text}
 							onKeyDown={(e) => handleEnterKeyEditTodo(e)}
 						/>
-						{console.log(editTodo.text)}
 						<div className="todoModalBtn" onClick={handleSubmitEditTodo}>
 							<AiFillEdit />
 						</div>
