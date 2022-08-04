@@ -7,7 +7,9 @@ const App = () => {
 	const API_BASE = "http://localhost:5000";
 	const [todos, setTodos] = useState([]);
 	const [popupAddNewTodo, setPopupAddNewTodo] = useState(false);
+	const [popupEditTodo, setPopupEditTodo] = useState(false);
 	const [newTodo, setNewTodo] = useState("");
+	const [editTodo, setEditTodo] = useState({});
 
 	useEffect(() => {
 		const getTodos = async () => {
@@ -78,12 +80,57 @@ const App = () => {
 		setTodos(todos.filter((todo) => todo._id !== data.result._id));
 	};
 
+	const updateTodo = async () => {
+		const res = await fetch(API_BASE + "/todo/update/" + editTodo._id, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				text: editTodo.text,
+			}),
+		});
+
+		if (!res.ok) {
+			const message = `An error has occured: ${res.status}`;
+			throw new Error(message);
+		}
+
+		const data = await res.json();
+
+		const newTodo = todos.map((todo) => {
+			if (todo._id === data._id) todo.text = data.text;
+			return todo;
+		});
+
+		setTodos(newTodo);
+		setPopupEditTodo(false);
+		setEditTodo({});
+	};
+
 	// submit new task using "Enter" key
-	const handleEnterKey = (e) => {
+	const handleEnterKeyAddTodo = (e) => {
 		//it triggers by pressing the enter key
 		if (e.keyCode === 13) {
 			addTodo();
 		}
+	};
+
+	const handleEnterKeyEditTodo = (e) => {
+		//it triggers by pressing the enter key
+		if (e.keyCode === 13) {
+			handleSubmitEditTodo();
+		}
+	};
+
+	const handleEditTodo = (todo) => {
+		setEditTodo(todo);
+		setPopupEditTodo(!popupEditTodo);
+	};
+
+	const handleSubmitEditTodo = () => {
+		updateTodo();
+		setPopupEditTodo(!popupEditTodo);
 	};
 
 	return (
@@ -92,14 +139,29 @@ const App = () => {
 
 			<div className="todos">
 				{todos.map((todo) => (
-					<div className="todo" key={todo._id}>
-						<div className="checkbox"></div>
-						<div className="text">{todo.text}</div>
-						<div className="editTodo">
-							<AiFillEdit />
+					<div
+						className={`todo ${todo.complete ? "isComplete" : ""}`}
+						key={todo._id}
+					>
+						<div>
+							<div
+								className="checkbox"
+								onClick={() => markCompleteTodo(todo._id)}
+							></div>
+							<div className="text" onClick={() => markCompleteTodo(todo._id)}>
+								{todo.text}
+							</div>
 						</div>
-						<div className="deleteTodoBtn" onClick={() => deleteTodo(todo._id)}>
-							<AiOutlineClose />
+						<div className="todoIcons">
+							<div className="editTodoBtn" onClick={() => handleEditTodo(todo)}>
+								<AiFillEdit />
+							</div>
+							<div
+								className="deleteTodoBtn"
+								onClick={() => deleteTodo(todo._id)}
+							>
+								<AiOutlineClose />
+							</div>
 						</div>
 					</div>
 				))}
@@ -114,8 +176,33 @@ const App = () => {
 				<AiOutlinePlus />
 			</div>
 
+			{popupEditTodo && (
+				<div className="todoModal" onClick={() => setPopupEditTodo(false)}>
+					<div onClick={(e) => e.stopPropagation()}>
+						<div className="closePopup" onClick={() => setPopupEditTodo(false)}>
+							<AiOutlineClose />
+						</div>
+						<h2>Edit Task</h2>
+						<input
+							type="text"
+							className="todoInputModal"
+							placeholder="Enter text here"
+							onChange={(e) =>
+								setEditTodo((prev) => ({ ...prev, text: e.target.value }))
+							}
+							value={editTodo.text}
+							onKeyDown={(e) => handleEnterKeyEditTodo(e)}
+						/>
+						{console.log(editTodo.text)}
+						<div className="todoModalBtn" onClick={handleSubmitEditTodo}>
+							<AiFillEdit />
+						</div>
+					</div>
+				</div>
+			)}
+
 			{popupAddNewTodo && (
-				<div className="addTodoModal" onClick={() => setPopupAddNewTodo(false)}>
+				<div className="todoModal" onClick={() => setPopupAddNewTodo(false)}>
 					<div onClick={(e) => e.stopPropagation()}>
 						<div
 							className="closePopup"
@@ -126,12 +213,13 @@ const App = () => {
 						<h2>Add Task</h2>
 						<input
 							type="text"
-							className="addTodoInput"
+							className="todoInputModal"
+							placeholder="Enter text here"
 							onChange={(e) => setNewTodo(e.target.value)}
 							value={newTodo}
-							onKeyDown={(e) => handleEnterKey(e)}
+							onKeyDown={(e) => handleEnterKeyAddTodo(e)}
 						/>
-						<div className="addTodoBtn" onClick={addTodo}>
+						<div className="todoModalBtn" onClick={addTodo}>
 							<BiTask />
 						</div>
 					</div>
