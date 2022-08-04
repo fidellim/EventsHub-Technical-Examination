@@ -166,7 +166,11 @@ const App = () => {
 					</div>
 				))}
 
-				{todos.length === 0 && <p>No tasks</p>}
+				{todos.length === 0 && (
+					<p className="noTaskText">
+						The list is currently empty. Try to add a task!
+					</p>
+				)}
 			</div>
 
 			<div
