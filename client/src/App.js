@@ -4,7 +4,7 @@ import { AiOutlineClose, AiFillEdit, AiOutlinePlus } from "react-icons/ai";
 import { BiTask } from "react-icons/bi";
 
 const App = () => {
-	const API_BASE = "http://localhost:5000";
+	const API_BASE = "https://eventshub-fullstack-exam.herokuapp.com/api";
 	const [todos, setTodos] = useState([]);
 	const [popupAddNewTodo, setPopupAddNewTodo] = useState(false);
 	const [popupEditTodo, setPopupEditTodo] = useState(false);
