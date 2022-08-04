@@ -39,8 +39,8 @@ Create a simple todo application that allows users to:
 
 ### Links
 
-- GitHub Repo: [Repo](https://github.com/fidellim/Test-Project-1)
-- Live Site URL: [Live Site](https://fidellim-test-project-1.netlify.app/)
+- GitHub Repo: [Repo](https://github.com/fidellim/EventsHub-Technical-Examination)
+- Live Site URL: [Live Site](https://eventshub-fullstack-exam-fidellim.netlify.app/)
 
 ### Screenshot
 
