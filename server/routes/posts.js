@@ -12,7 +12,7 @@ const {
 router.get("/todos", getTodos);
 router.post("/todo/new", createTodo);
 router.delete("/todo/delete/:id", deleteTodo);
-router.get("/complete/:id", completeTodo);
+router.get("todo/complete/:id", completeTodo);
 router.put("/todo/update/:id", updateTodo);
 
 module.exports = router;
