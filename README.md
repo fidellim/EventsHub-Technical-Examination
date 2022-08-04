@@ -53,6 +53,8 @@ Create a simple todo application that allows users to:
 - [Submit using Enter Key](https://reactgo.com/react-trigger-button-click/#:~:text=Using%20the%20onKeypress%20event,the%20Enter%20key%20is%2013.) - submit using enter key as an alternative to a submit button.
 - [Put Request using Fetch](https://jasonwatmore.com/post/2020/11/02/react-fetch-http-put-request-examples) - send an HTTP PUT request using fetch.
 - [Animate line-through using CSS](https://stackoverflow.com/questions/36267507/is-it-possible-to-animate-a-css-line-through-text-decoration) - add an animation of a text's line-through.
+- [Export in CommonJS Module Syntax NodeJs](https://stackoverflow.com/questions/38296667/getting-unexpected-token-export) - export using modules.
+- [Router.use() error](https://stackoverflow.com/questions/27465850/typeerror-router-use-requires-middleware-function-but-got-a-object) - router.use() requires middleware function but got an Object solution.
 
 ## Author
 
