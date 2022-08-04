@@ -1,9 +1,9 @@
+/* color variables */
 :root {
   --light: rgb(202, 202, 202);
   --light-alt: #61759b;
   --dark: #772f40;
   --dark-alt: #3C121C;
-  --bg-color: #3C121C;
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 body {
-	background-color: var(--bg-color);
+	background-color: var(--dark-alt);
   color: var(--light);
   font-size: 1rem;
 }
@@ -21,24 +21,6 @@ body {
 h1 {
   font-size: 1.5rem;
   margin: .5rem 1rem 1rem 1rem;
-}
-
-.addTodoFloatingBtn {
-	position: fixed;
-	bottom: 25px;
-	right: 25px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 64px;
-	height: 64px;
-	border-radius: 50%;
-	font-size: 28px;
-	font-weight: 900;
-  background-color: #3f0d12;
-  background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
-	cursor: pointer;
-	transition: all 0.7s;
 }
 
 .todos {
@@ -49,6 +31,14 @@ h1 {
   margin: 0 1rem;
 }
 
+/* Appears when there is not task/s in the list */
+.noTaskText {
+  margin-top: 3rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Each task/todo */
 .todo {
   position: relative;
   background-color: var(--dark);
@@ -63,6 +53,10 @@ h1 {
   width: 100%;
 }
 
+.todo > div:first-child {
+  display: flex;
+}
+
 .todo .checkbox {
   width: 20px;
   height: 20px;
@@ -73,8 +67,9 @@ h1 {
   transition: all 0.4s;
 }
 
-.todo > div:first-child {
-  display: flex;
+.todo.isComplete .checkbox {
+  background-color: var(--light-alt);
+  transition: all 0.4s;
 }
 
 .todo .text {
@@ -84,21 +79,12 @@ h1 {
   text-decoration-color: transparent;
 }
 
-.todo.isComplete .checkbox {
-  background-color: var(--light-alt);
-  transition: all 0.4s;
-}
-
 .todo.isComplete .text {
   text-decoration-color: var(--light);
   transition: all 0.4s;
 }
 
-.editTodoBtn {
-  cursor: pointer;
-}
-
-.deleteTodoBtn {
+.editTodoBtn, .deleteTodoBtn {
   cursor: pointer;
 }
 
@@ -107,11 +93,7 @@ h1 {
   gap: 1rem;
 }
 
-.addTodoFloatingBtn:hover {
-	transform: rotate(90deg);
-	transition: all 0.4s;
-}
-
+/* Modal for adding/editing a task */
 .todoModal {
 	position: fixed;
 	left: 0;
@@ -135,13 +117,6 @@ h1 {
 	background-color: var(--dark);
 }
 
-.closePopup {
-  cursor: pointer;
-  position: absolute;
-  top: 7.5px;
-  right: 7.5px;
-}
-
 .todoInputModal {
   appearance: none;
   outline: none;
@@ -159,6 +134,13 @@ h1 {
   color: var(--light);
 }
 
+.closePopup {
+  cursor: pointer;
+  position: absolute;
+  top: 7.5px;
+  right: 7.5px;
+}
+
 .todoModalBtn {
   background-color: grey;
   border-radius: 5px;
@@ -169,4 +151,28 @@ h1 {
   font-size: 1.5rem;
   padding: .25rem;
   cursor: pointer;
+}
+
+/* Floating Button */
+.addTodoFloatingBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 900;
+  background-color: #3f0d12;
+  background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  cursor: pointer;
+  transition: all 0.7s;
+}
+
+.addTodoFloatingBtn:hover {
+  transform: rotate(90deg);
+  transition: all 0.4s;
 }
