@@ -34,9 +34,8 @@ Create a simple todo application that allows users to:
 
 ### Built with
 
-- **Frontend** - React, SASS
-- **Testing** - Lighthouse (Performance, Accessibility, Best Practices, SEO), Jest, React Testing Library
-- **Other** - Docker
+- **Frontend** - React
+- **Backend** - MongoDB, Express, NodeJs
 
 ### Links
 
@@ -50,7 +49,10 @@ Create a simple todo application that allows users to:
 
 ## Resources
 
-- [Preconnect to required origin](https://www.afasterweb.com/2018/04/11/two-tips-for-using-3rd-party-fonts/) - using `<link>` instead of `@import` for using 3rd-party provider.
+- [React Icons](https://react-icons.github.io/react-icons) - using react-icons dependency.
+- [Submit using Enter Key](https://reactgo.com/react-trigger-button-click/#:~:text=Using%20the%20onKeypress%20event,the%20Enter%20key%20is%2013.) - submit using enter key as an alternative to a submit button.
+- [Put Request using Fetch](https://jasonwatmore.com/post/2020/11/02/react-fetch-http-put-request-examples) - send an HTTP PUT request using fetch.
+- [Animate line-through using CSS](https://stackoverflow.com/questions/36267507/is-it-possible-to-animate-a-css-line-through-text-decoration) - add an animation of a text's line-through.
 
 ## Author
 
