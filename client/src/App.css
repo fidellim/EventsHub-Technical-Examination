@@ -1,3 +1,11 @@
+:root {
+  --light: rgb(202, 202, 202);
+  --light-alt: #61759b;
+  --dark: #772f40;
+  --dark-alt: #3C121C;
+  --bg-color: #3C121C;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,39 +13,105 @@
 }
 
 body {
-	background-color: bisque;
+	background-color: var(--bg-color);
+  color: var(--light);
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: .5rem 1rem 1rem 1rem;
 }
 
 .addTodoFloatingBtn {
 	position: fixed;
-	bottom: 32px;
-	right: 32px;
+	bottom: 25px;
+	right: 25px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	width: 64px;
 	height: 64px;
-	border-radius: 999px;
+	border-radius: 50%;
 	font-size: 28px;
 	font-weight: 900;
-	color: var(--light);
-	background-color: var(--primary);
-	background-image: linear-gradient(
-		to bottom right,
-		var(--primary),
-		var(--secondary)
-	);
+  background-color: #3f0d12;
+  background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
 	cursor: pointer;
-	transition: all 1s;
+	transition: all 0.7s;
+}
+
+.todos {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo {
+  position: relative;
+  background-color: var(--dark);
+  padding: 16px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.5s;
+  margin-bottom: 16px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.todo .checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+  border-radius: 50%;
+  background-color: var(--dark-alt);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.todo > div:first-child {
+  display: flex;
+}
+
+.todo .text {
+  cursor: pointer;
+  transition: all 0.4s;
+  text-decoration: line-through;
+  text-decoration-color: transparent;
+}
+
+.todo.isComplete .checkbox {
+  background-color: var(--light-alt);
+  transition: all 0.4s;
+}
+
+.todo.isComplete .text {
+  text-decoration-color: var(--light);
+  transition: all 0.4s;
+}
+
+.editTodoBtn {
+  cursor: pointer;
+}
+
+.deleteTodoBtn {
+  cursor: pointer;
+}
+
+.todoIcons {
+  display: flex;
+  gap: 1rem;
 }
 
 .addTodoFloatingBtn:hover {
 	transform: rotate(90deg);
-	transition: all 1s;
+	transition: all 0.4s;
 }
 
-.addTodoModal {
+.todoModal {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -49,7 +123,7 @@ body {
 	z-index: 1;
 }
 
-.addTodoModal > div {
+.todoModal > div {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -57,7 +131,7 @@ body {
 	padding: 2rem;
 	border-radius: 5px;
   gap: .75rem;
-	background-color: white;
+	background-color: var(--dark);
 }
 
 .closePopup {
@@ -67,11 +141,12 @@ body {
   right: 7.5px;
 }
 
-.addTodoInput {
+.todoInputModal {
   appearance: none;
   outline: none;
   border: none;
-  background-color: #FFF;
+  background-color: var(--dark-alt);
+  color: var(--light);
   padding: 16px;
   border-radius: 5px;
   width: 100%;
@@ -79,7 +154,11 @@ body {
   font-size: 20px;
 }
 
-.addTodoBtn {
+.todoInputModal::placeholder {
+  color: var(--light);
+}
+
+.todoModalBtn {
   background-color: grey;
   border-radius: 5px;
   width: 100%;
